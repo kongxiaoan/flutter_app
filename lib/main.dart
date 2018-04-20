@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import './raisedButtonState.dart' as raisedButtonState;
 
 void main() => runApp(new MyApp()); // => 单行函数活方法的简短手段
+
+class MyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new GestureDetector(
+      onTap: () {
+        print('点击了我');
+      },
+      child: new Container(
+        height: 36.0,
+        width: 40.0,
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        decoration: new BoxDecoration(
+          borderRadius: new BorderRadius.circular(5.0),
+          color: Colors.lightGreen[50],
+        ),
+        child: new Center(
+          child: new Text('点击'),
+        ),
+      ),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primaryColor: Colors.white,
       ),
-      home: new RandomWords(),
+      home: raisedButtonState.getRaisedButtonState(),
     );
   }
 }
@@ -24,6 +49,7 @@ class RandomWords extends StatefulWidget {
 
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
+
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   /**
