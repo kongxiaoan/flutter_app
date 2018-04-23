@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import './raisedButtonState.dart' as raisedButtonState;
+import './ShoppingListItem.dart' as ShoppingList;
+import './CookBook_Theme.dart' as MyTheme;
 
-void main() => runApp(new MyApp()); // => 单行函数活方法的简短手段
+void main() => runApp(MyTheme.getInstance()); // => 单行函数活方法的简短手段
 
 class MyButton extends StatelessWidget {
   @override
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primaryColor: Colors.white,
       ),
-      home: raisedButtonState.getRaisedButtonState(),
+      home: ShoppingList.getInstance(),
     );
   }
 }
@@ -127,7 +129,8 @@ class RandomWordsState extends State<RandomWords> {
           color: alreadySaved ? Colors.red : null,
         ),
         onTap: () {
-          //在Flutter的反应风格框架中，调用setState()触发器调用build()State对象的方法，从而导致对UI的更新
+          //在Flutter的反应风格框架中，调用setState()触发器调用build()State对象的方法，
+          //从而导致对UI的更新
           setState(() {
             if (alreadySaved) {
               _saved.remove(suggestion);
